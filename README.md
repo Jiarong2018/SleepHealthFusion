@@ -1,7 +1,7 @@
 Reproducibility Package for:
 "Screening Insomnia Using an Actigraphy-Based Sleep Rhythm Index with Lifestyle and Physical Function"
 
-OVERVIEW
+### OVERVIEW
 This archive contains all data and code required to reproduce the main analyses and figures reported in the manuscript.
 
 DIRECTORY STRUCTURE
@@ -23,14 +23,14 @@ SOFTWARE REQUIREMENTS
 - Python 3.9
 - See requirements.txt for exact, pinned versions.
 
-Install:
+### Install:
 pip install -r requirements.txt
 
-DATA
+### DATA
 - Input file for all analyses: data/deidentified_data.csv
 - Ensure the file exists before running. The Makefile checks this automatically.
 
-SCRIPTS
+### SCRIPTS
 
 1) model_training_xgboost.py
 Train and evaluate an XGBoost classifier.
@@ -41,7 +41,7 @@ Expected outputs
 
 Run
 make train
-# or
+ or
 (cd script && python model_training_xgboost.py)
 
 
@@ -55,7 +55,7 @@ Behavior
 
 Run
 make contributions
-# or
+ or
 (cd script && python feature_contribution.py)
 
 
@@ -68,22 +68,22 @@ Visualization matches SVM-style
 - Scatter points use viridis endpoints (Non-Insomnia first, Insomnia second)
 - Colorbar labeled as P(Insomnia)
 
-Output
+#### Output
 - result/PCA2_LogReg_boundary.pdf
 
 Run
 make pca_logreg
-# or
+ or
 (cd script && python PCA_LogisticRegression.py)
 
 
 4) statistic_analysis1.py
 Generate KDE and box plots of SRI stratified by insomnia (PSQI), depression, and anxiety.
 
-Reads
+#### Reads
 - data/deidentified_data.csv
 
-Writes
+#### Writes
 - result/kde_plot_psqi.pdf
 - result/box_plot_psqi.pdf
 - result/kde_plot_depression.pdf
@@ -93,7 +93,7 @@ Writes
 
 Run
 make stat1
-# or
+or
 (cd script && python statistic_analysis1.py)
 
 
@@ -109,7 +109,7 @@ Writes
 
 Run
 make stat2
-# or
+or
 (cd script && python statistic_analysis2.py)
 
 CUT-OFFS & PLOTTING CONVENTIONS
@@ -117,7 +117,7 @@ CUT-OFFS & PLOTTING CONVENTIONS
 - KDE/box plots: viridis (2 endpoints), explicit legend order; anxiety panel uses fixed axis/legend ordering to match manuscript figures.
 - Export: PDF, dpi=450, bbox_inches='tight'
 
-REPRODUCTION
+### REPRODUCTION
 One command to build everything:
 make all
 
@@ -133,6 +133,6 @@ make clean-figs
 Remove figures and model artifacts:
 make clean
 
-NOTES
+### NOTES
 - All scripts assume relative paths as shown above.
 - If you modify directory names, also update the paths inside the scripts and the Makefile.
